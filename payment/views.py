@@ -3,7 +3,6 @@ from multiprocessing import context
 from django.shortcuts import redirect, render
 from django.views.decorators.csrf import csrf_exempt
 import razorpay
-from payment.forms import PaymentForm
 from payment.models import *
 from user.models import User
 from user.views import *

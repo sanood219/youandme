@@ -5,8 +5,6 @@ from os import remove
 from pickle import TRUE
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
-from django.dispatch import receiver
-from django.forms import CharField
 from django.utils import timezone
 from psycopg2 import Timestamp
 
