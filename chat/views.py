@@ -1,4 +1,4 @@
-from concurrent.futures import thread
+# from concurrent.futures import thread
 from multiprocessing import context
 from django.shortcuts import redirect, render
 from user.models import User

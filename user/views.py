@@ -13,7 +13,7 @@ from django.conf import settings
 from django.core.mail import send_mail
 # Create your views here.
 
-
+@never_cache
 def signup(request):
     if 'username' in request.session:
         return redirect(home)
@@ -31,7 +31,7 @@ def signup(request):
         return redirect(register)
     return render(request, 'signup.html')
 
-
+@never_cache
 def register(request):
     if request.method == 'POST':
         full_name = request.POST['fullname']
@@ -97,7 +97,7 @@ def verify(request, token):
         messages.error(request, 'somthing went wrong')
         return redirect(login)
 
-
+@never_cache
 def login(request):
     if 'username' in request.session:
         return redirect(home)
