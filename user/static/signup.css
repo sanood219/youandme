@@ -1,0 +1,113 @@
+.bg-img{
+    background: url(https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 50rem;
+    width: 100%;
+    background-size: cover;
+    display: flex;
+    padding-left: 51rem;
+    padding-top: 4rem;
+}
+.signup{
+    background: rgba(0, 0, 0, 0.67);
+    height: 34rem;
+    width: 26rem;
+    border-radius: 45px;
+}
+.signup-text{
+    margin-left: 5rem;
+    
+}
+.sign-text{
+    font-size: 1.3rem;
+}
+.input1{
+    height: 53px;
+    margin-left: 0rem;
+    border-radius: 17px;
+}
+.input2{
+    height: 53px;
+    margin-left: 5rem;
+    border-radius: 17px;
+}
+.signup-link{
+    font-size: 15px;
+}
+@media screen and (max-width:1233px) {
+    .bg-img{
+        padding-left: 41rem;
+    }
+}
+
+@media screen and (max-width:1064px) {
+    .bg-img{
+        padding-left: 32rem;
+    }
+}
+    
+@media screen and (max-width:928px) {
+    .bg-img{
+        padding-left: 17rem;
+    }
+}
+@media screen and (max-width:686px) {
+    .bg-img{
+        padding-left: 9rem;
+    }
+}
+
+@media screen and (max-width:561px) {
+    .bg-img{
+        padding-left: 4rem;
+    }
+}
+@media screen and (max-width:470px) {
+    .bg-img{
+        padding-left: 52px;
+    }
+    .signup{
+        width: 21rem;
+    }
+    .signup-text{
+        margin-left: 2.5rem;
+    }
+    .input2{
+        margin-left: 2.5rem;
+    }
+}
+@media screen and (max-width:375px) {
+    .bg-img{
+        padding-left: 55px;
+    }
+    .signup{
+        width: 15rem;
+        height: 24rem;
+    }
+    .signup-text{
+        margin-left: 1.5rem;
+        font-size: 15px;
+    }
+    .input2{
+        margin-left: 1.5rem;
+    }
+    .sign-text{
+        font-size: 1rem;
+    }
+    .input1{
+        height: 40px;
+    }
+    .input2{
+        height: 40px;
+    }
+    .btn-lg{
+        font-size: 13px;
+    }
+    .signup-link{
+        font-size: 10px;
+    }
+    .mb-3{
+        padding-bottom: 0.5;
+    }
+}

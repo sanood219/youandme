@@ -1,0 +1,270 @@
+{% extends "base.html" %}
+
+{% block view %}
+<section style="background-color: #616161;">
+    <div class="container-fluid mb-5">
+        <div class="row">
+            <nav class="navbar bg-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+                </div>
+            </nav>
+        </div>
+    </div>
+    {% for x in user %}
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-4">
+                <div class="card mb-4" style="height: 98%;">
+                    <div class="card-body text-center">
+                        <img src="{{x.user_info.profile.url}}" alt="avatar" class=" img-fluid" style="width: 150px;">
+                        <h5 class="my-3">{{x.user_info.full_name}}</h5>
+                        <p class="text-muted mb-4">{{x.user_info.gender}}</p>
+                        <p class="text-muted mb-4">{{x.user_info.city}}</p>
+
+
+
+                        <div class="d-flex justify-content-center mb-2">
+                            {% if friend_list.is_friends %}
+                            <a href="{% url 'chat_id' x.id %}"><button type="button"
+                                    class="btn btn-info">Message</button></a>
+                            <div class="d-flex justify-content-center mb-2 mx-2">
+                                <a href="{% url 'gallery' x.id %}"><button type="button"
+                                        class="btn btn-success">Gallery</button></a>
+                            </div>
+                            {% endif %}
+
+                            <div class="d-flex justify-content-center mb-2 mx-2">
+                                <a href="{% url 'gallery' x.id %}">
+                                    <div class="d-flex justify-content-center mb-2 mx-2">
+                                        {% if friend_list.is_friends %}
+
+                                        {% else %}
+                                        {% if friend_request.is_active %}
+                                        <a href="{% url 'cancel_request' x.id %}"><button type="button"
+                                                class="btn btn-outline-danger">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd"
+                                                        d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z">
+                                                    </path>
+                                                </svg>
+                                                <span style="text-decoration: none;">Cancel Request</span>
+                                            </button></a>
+                                        {% else %}
+                                        <a href="{% url 'friend_request' x.id %}"><button type="button"
+                                                class="btn btn-outline-danger">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd"
+                                                        d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z">
+                                                    </path>
+                                                </svg>
+                                                <span style="text-decoration: none;">Send Request</span>
+                                            </button></a>
+                                        {% endif %}
+                                        {% endif %}
+
+
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% if friend_list.is_friends %}
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <span class="text-dark fs-5 text-center" style="text-decoration: underline 1px;">Personal
+                            Details</span>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Full Name</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{x.user_info.full_name}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Email</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{x.email}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Phone</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{x.user_info.phone}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Address</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{x.user_info.address}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Mother Name</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{x.user_info.mother_name}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Father Name</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{x.user_info.father_name}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Religion</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{x.user_info.religion}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Date of Birth</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{x.user_info.date_of_birth}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Job</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{x.user_info.job}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Education</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{x.user_info.qualification}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Marital Status </p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{x.user_info.marital_status}}</p>
+                            </div>
+                        </div>
+
+                        <span class="text-dark fs-5 text-center" style="text-decoration: underline 1px;">Physical
+                            Details</span>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Height</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{x.user_info.height}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Weight</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{x.user_info.weight}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Body Type</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{x.user_info.body_type}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Physical Status</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{x.user_info.physical_status}}</p>
+                            </div>
+                        </div>
+                        <span class="text-dark fs-5 text-center" style="text-decoration: underline 1px;">Hobby</span>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Food Type</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{x.user_info.food}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Smoking</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{x.user_info.smoking}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Drinking</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{x.user_info.drinking}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="jumbotron jumbotron-fluid">
+                <div class="col-lg-8">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="container">
+                                <h1 class="display-4">Send Request</h1>
+                                <p class="lead">send request to view the profile details.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+    {% endfor %}
+
+
+</section>
+{% endblock view %}

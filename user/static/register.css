@@ -1,0 +1,27 @@
+.bg-img{
+    background: url(https://i.insider.com/5eac8da748d92c3d275bb2de?width=1300&format=jpeg&auto=webp);
+    background-repeat: no-repeat;
+    display: flex;
+    background-position: -44rem;
+    background-color: #cad8ee;
+    background-size: 0;
+}
+.register{
+    background: rgba(0, 0, 0, 0.67);
+    height: 34rem;
+
+    border-radius: 45px;
+    margin-left: 8.5rem;
+    margin-top: 6rem;
+    position: absolute;
+}
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+}
+.card-registration .select-arrow {
+    top: 13px;
+}
+

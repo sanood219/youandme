@@ -1,0 +1,40 @@
+{% extends "register.html" %}
+{% block register-js %}
+<script>
+  jQuery('#form').validate({
+    rules:{
+      fullname:{
+        minlength:5,
+        required:true
+      },
+    },messages:{
+      fullname:{
+        minlength:"Please enter 5 charecter",
+        required:"Please enter your name"
+      },
+      phone:{
+        required:"Please enter your phone number"
+      }
+    }
+  })
+
+  $(document).ready(function(){
+    $("#form").click(function(){
+      var inputval = $('#phone').val();
+      console.log(inputval)
+      if (inputval.length == 10){
+        if (isNaN(inputval)){
+          $("#result").html("Enter a valid number")
+        }
+        else{
+          $("#result").html(" ")
+        }
+        $("#result").html(" ")
+      }
+      else{
+        $("#result").html("Not a valid number")
+      }
+    });
+  });
+</script>
+{% endblock register-js %}

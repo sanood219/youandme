@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block login-css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'login.css' %}">
+<style>
+    .error {
+        color: red;
+    }
+</style>
+{% endblock login-css %}
+{% block login %}
+<div class="bg-img">
+    <div class="signup">
+        <p class="text-center text-white h3 fw-bold">Sign in</p>
+        <form id="form" action="" style="padding-top: 3.5rem;" method="POST">
+            {% csrf_token %}
+            <div class="text-white signup-text sign-text"><span class="sign-text">Enter your Email</span>
+                <input class="input1" type="text" name="email" id="username" placeholder="Email">
+            </div>
+            <div class="text-white d-inline signup-text sign-text"><span class="sign-text">Enter your password</span>
+                <input class="input2" type="password" name="password" id="pass1" placeholder="password">
+            </div>
+            <div class="d-flex justify-content-center mx-4 mb-lg-2" style="padding-top: 35px;">
+                <button type="submit" class="btn btn-primary btn-lg mt-3">Login</button>
+            </div>
+            <div class="d-flex justify-content-center mx-4">
+                
+                {% for message in messages %}
+                <h6 class="text-danger ">{{message}}</h6>
+                {% endfor %}
+                
+
+            </div>
+            <div class="d-flex justify-content-center"><span class="text-white signup-link">don't have a
+                    account?</span><a href="/signup" class="signup-link" style="text-decoration: none;">click here</a>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+<script>
+    jQuery('#form').validate({
+        rules: {
+            email: {
+                email: true,
+                required: true
+            },
+        }, messages: {
+            email: {
+                email: "Invalid Email",
+                required: "Enter your email"
+            }
+        }
+    })
+</script>
+{% endblock login %}

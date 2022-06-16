@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+{% block home-css %}
+{% load static %}
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'view_req.css' %}">
+<link rel="stylesheet" href="{% static 'home.css' %}">
+
+{% endblock home-css %}
+{% block home %}
+<div class="wrapper d-flex align-items-stretch" style="height: 48rem;">
+    <nav id="sidebar">
+        <div class="custom-menu">
+            <button type="button" id="sidebarCollapse" class="btn btn-primary">
+            </button>
+        </div>
+        <div class="img bg-wrap text-center py-4" style="background-image: url(images/bg_1.jpg);">
+            <a href="{% url 'log_user' user.id %}">
+                <div class="user-logo">
+                    <div class="img" style="background-image: url({{user.user_info.profile.url}});"></div>
+                    <h3>{{user.user_info.full_name}}</h3>
+                </div>
+            </a>
+        </div>
+
+        <ul class="list-unstyled components mb-5">
+            <li class="">
+                <a href="{% url 'home' %}"><span class="fa fa-home mr-3"></span> Home</a>
+            </li>
+            <li>
+                <a href="{% url 'message_page' %}"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            fill="currentColor" class="bi bi-chat-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9.06 9.06 0 0 0 8 15z" />
+                        </svg> <span class="pl-3"> Messages</span></a>
+            </li>
+            <li class="active">
+                <a href="{% url 'view_request' %}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+                        <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                        <path fill-rule="evenodd"
+                            d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z" />
+                        <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
+                    </svg><span class="pl-3"> Friend Requests</span></a>
+            </li>
+            <li>
+                <a href="{% url 'user_logout' %}"><span class="fa fa-sign-out mr-3"></span> Sign Out</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="row fix-algn" style="padding-top: 2rem;">
+            <div class="col-md-8">
+                <span class="fs-3 fix-txt" style="margin-left: 15px;">Requests</span>
+                <div class="people-nearby">
+                    {% for x in friend_request %}
+                    <div class="d-flex"></div>
+                    <table class="table table-striped" style="width: 153%;">
+                        <tbody>
+                            <thead>
+                                <th>Profile</th>
+                                <th>name</th>
+                                <th>Option</th>
+                            </thead>
+                            <tr>
+                                <td>
+                                    <div class="col-md-2 col-sm-2">
+                                        <img src="{{x.sent_by.user_info.profile.url}}" alt="user"
+                                            class="profile-photo-lg">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="col-md-7 col-sm-7">
+                                        <h5><a href="{% url 'view' x.sent_by.id %}" class="profile-link">{{x.sent_by.user_info.full_name}}</a></h5>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="col-md-3 col-sm-3">
+                                        <a href="{% url 'accept_request' x.sent_by.id %}"><button
+                                                class="btn btn-primary pull-right">accept</button></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    {% endfor %}
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <span class="fs-3">Friends</span>
+                                <div class="people-nearby">
+                                    {% for x in friend_list %}
+                                    {% if x.friend == user %}
+                                    <div class="d-flex"></div>
+                                    <table class="table table-striped" style="width: 245%;">
+                                        <tbody>
+                                            <thead>
+                                                <th>Profile</th>
+                                                <th>name</th>
+                                                <th>Option</th>
+                                            </thead>
+                                            <tr>
+                                                <td>
+                                                    <div class="col-md-2 col-sm-2">
+                                                        <img src="{{x.user.user_info.profile.url}}" alt="user"
+                                                            class="profile-photo-lg">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="col-md-7 col-sm-7">
+                                                        <h5><a href="{% url 'view' x.user.id %}" class="profile-link">{{x.user.user_info.full_name}}</a></h5>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="col-md-3 col-sm-3">
+                                                        <a href="{% url 'friend_remove' x.user.id %}"><button
+                                                                class="btn btn-danger pull-right">remove</button></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    {% else %}
+                                    <div class="d-flex"></div>
+                                    <table class="table table-striped" style="width: 245%;">
+                                        <tbody>
+                                            <thead>
+                                                <th>Profile</th>
+                                                <th>name</th>
+                                                <th>Option</th>
+                                            </thead>
+                                            <tr>
+                                                <td>
+                                                    <div class="col-md-2 col-sm-2">
+                                                        <img src="{{x.friend.user_info.profile.url}}" alt="user"
+                                                            class="profile-photo-lg">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="col-md-7 col-sm-7">
+                                                        <h5><a href="{% url 'view' x.friend.id %}" class="profile-link">{{x.friend.user_info.full_name}}</a></h5>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="col-md-3 col-sm-3">
+                                                        <a href="{% url 'friend_remove' x.friend.id %}"><button
+                                                                class="btn btn-danger pull-right">remove</button></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    {% endif %}
+                                    
+                                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="{% static 'jquery.min.js' %}"></script>
+<script src="{% static 'home.js' %}"></script>
+{% endblock home %}

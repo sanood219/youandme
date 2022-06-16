@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block subscription %}
+<section class="container my-4">
+    <h1 class="text-center mb-4 section-heading border-bottom pb-2">Plan</h1>
+    <main>
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center" style="justify-content: center;">
+            <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3">
+                        <h4 class="my-0 fw-normal">ULTIMATE</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">₹ 899<small class="text-muted fw-light">/unlimited</small>
+                        </h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>All kerela profiles</li>
+                            <li>Fast and secure</li>
+                            <li>Live chat</li>
+                            
+                            <li>...</li>
+                        </ul>
+                        <a href="{% url 'checkout' %}" class="w-100 btn btn-lg btn-outline-primary">Buy Plan</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</section>
+{% endblock subscription %}

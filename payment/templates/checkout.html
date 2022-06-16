@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block checkout-head %}
+  <title>Check Out</title>
+{% endblock checkout-head %}
+{% block checkout %}
+<main>
+    <!-- Services -->
+    <section class="container my-4">
+        <h1 class="text-center mb-4 section-heading border-bottom pb-2">Checkout</h1>
+            <table class="table table-bordered">
+                <thead class="table-warning">
+                    <tr>
+                        <th>Plan</th>
+                        <th>Plan Detail</th>
+                        <th>Payment For</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <table class="table-bordered table">
+                                <tr>
+                                    <th>Name</th>
+                                    <td>ULTIMATE</td>
+                                </tr>
+                                <tr>
+                                    <th>Price</th>
+                                    <td>₹ 899</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <ul class="list-unstyled">
+                              <li>All kerela profiles</li>
+                              <li>Fast and secure</li>
+                              <li>Help and support</li>
+                              <li>Live chat</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th><label for="validity1">Unlimited</label></th>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot class="table-info">
+                    <tr>
+                        <td></td>
+                        <th>Total Amount</th>
+                        <td><b>₹ <span class="totalAmount">899</span></b></td>
+                        <td><form action="" method="POST">{% csrf_token %} <input class="btn btn--sub btn--lg  my-md" type="submit" value="Proceed to pay"></form></td>
+                    </tr>
+                </tfoot>
+            </table>
+    </section>
+    <!-- End -->
+</main>
+<!-- End -->
+
+{% if payment %}
+
+
+<form action="{% url 'payment-status' %}" method="POST">
+    {% csrf_token %}
+    <script
+    
+        src="https://checkout.razorpay.com/v1/checkout.js"
+        data-key="rzp_test_JNm726wMkXt53A"
+        data-amount="{{payment.amount}}"
+        data-currency="{{payment.currency}}"
+        data-order_id="{{payment.id}}"
+        data-buttontext="Pay with Razorpay"
+        data-name="YOU AND ME"
+        data-description="CONNECT WITH SOULMATES
+        FROM AROUND KERALA"
+        data-image="https://example.com/your_logo.jpg"
+        data-prefill.name="{{payment.name}}"
+        data-prefill.email="{{form.sender.email}}"
+        data-theme.color="#302c3c"
+    ></script>
+    <input type="hidden" custom="Hidden Element" name="hidden">
+    </form>
+    
+{% endif %}
+{% endblock checkout %}

@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block signup-css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'signup.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    .error {
+        color: red;
+        margin-left: 19%;
+    }
+</style>
+{% endblock signup-css %}
+
+{% block signup %}
+<div class="bg-img">
+    <div class="signup">
+        <p class="text-center text-white h3 fw-bold">Sign up</p>
+        <form id="form" action="" style="padding-top: 0.5rem;" method="POST">
+            {% csrf_token %}
+            <div class="text-white d-inline signup-text sign-text"><span class="sign-text">Enter your email</span>
+                <input class="input2" type="text" name="email" id="email" placeholder="Email"><br>
+            </div>
+            <div class="text-white d-inline signup-text sign-text"><span class="sign-text">Enter your password</span>
+                <input class="input2" type="password" name="password1" id="pass1" placeholder="password"><br>
+            </div>
+            <div class="text-white d-inline signup-text sign-text"><span class="sign-text">Conform your password</span>
+                <input class="input2" type="password" name="password2" id="pass2" placeholder="password">
+            </div>
+            <div class="d-flex justify-content-center mx-4 mb-lg-4">
+                <button type="submit" class="btn btn-primary btn-lg mt-3">Register</button>
+            </div>
+            <div class="d-flex justify-content-center mx-4 mb-lg-4">
+                {% for message in messages %}
+                <h6 class="text-danger ">{{message}}</h6>
+                {% endfor %}
+            </div>
+
+            <div class="d-flex justify-content-center"><span class="text-white signup-link">already have a
+                    account?</span><a href="/login" class="signup-link" style="text-decoration: none;">click here</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+<script>
+    jQuery('#form').validate({
+        rules: {
+            email: {
+                email: true,
+                required: true
+            },
+            password1: {
+                required: true,
+                minlength: 8
+            },
+            password2: {
+                equalTo: "#pass1",
+                required:true
+            }
+        }, messages: {
+            email: {
+                email: "Invalid Email",
+                required: "Enter your email"
+            },
+            password1: {
+                required: "Enter a password",
+                minlength: "Password must be 8 charecter"
+            },
+            password2:{
+                required:"re-enter the password",
+                equalTo:"Enter the same password"
+            }
+        }
+    })
+</script>
+{% endblock signup %}
