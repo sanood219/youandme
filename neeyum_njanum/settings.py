@@ -161,7 +161,9 @@ EMAIL_USE_TLS = True
 CHANNEL_LAYERS = {
     'default':{
         'BACKEND': 'channels.layers.InMemoryChannelLayer',
-        
+        # "CONFIG": {
+        #     "hosts": [("redis-server-name", 6379)],
+        # },
     }
 }
 MEDIA_URL = '/images/'
