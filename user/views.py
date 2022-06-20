@@ -196,7 +196,7 @@ def view(request, id):
             }
             return render(request, 'view.html', context)
     else:
-        return render(request,'not_sub.html')
+        return render(request,'not_sub.html',{'user':user1})
 
 
 def gallery(request, id):

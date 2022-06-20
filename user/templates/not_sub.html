@@ -2,6 +2,6 @@
 
 {% block not-sub %}
 <div class="alert alert-danger" role="alert">
-    You dont have a plan please buy plan to access to see profiles<a href="{% url 'subscription' %}" class="alert-link">click here</a>. To buy ultimate plan
+    You dont have a plan please buy plan to access to see profiles<a href="{% url 'subscription' user.id %}" class="alert-link">click here</a>. To buy ultimate plan
   </div>
 {% endblock not-sub %}
