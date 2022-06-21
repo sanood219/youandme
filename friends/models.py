@@ -1,5 +1,3 @@
-from operator import truediv
-from tkinter.tix import Tree
 from django.db import models
 from user.models import *
 
