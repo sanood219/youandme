@@ -25,6 +25,8 @@ https://docs.djangoproject.com/en/4.0/howto/deployment/asgi/
 
 import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "neeyum_njanum.settings")
+import django
+django.setup()
 from chat import consumers
 from channels.auth import AuthMiddlewareStack
 from channels.routing import ProtocolTypeRouter, URLRouter
