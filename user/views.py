@@ -9,9 +9,11 @@ from django.contrib.sites.shortcuts import get_current_site
 import random
 from django.conf import settings
 from django.core.mail import send_mail
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
 @never_cache
+@csrf_exempt
 def signup(request):
     if 'username' in request.session:
         return redirect(home)
@@ -30,6 +32,7 @@ def signup(request):
     return render(request, 'signup.html')
 
 @never_cache
+@csrf_exempt
 def register(request):
     if request.method == 'POST':
         full_name = request.POST['fullname']
@@ -96,6 +99,7 @@ def verify(request, token):
         return redirect(login)
 
 @never_cache
+@csrf_exempt
 def login(request):
     if 'username' in request.session:
         return redirect(home)
@@ -222,7 +226,7 @@ def log_user(request, id):
         }
     return render(request, 'log_user.html', context)
 
-
+@csrf_exempt
 def user_edit(request, id):
     if request.method == 'POST':
         full_name = request.POST['fullname']

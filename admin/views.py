@@ -1,3 +1,4 @@
+import django
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate
 from django.contrib import messages
@@ -5,10 +6,12 @@ from friends.models import Friend_list
 from user.models import User
 from django.views.decorators.cache import never_cache
 from payment.models import *
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
 
 @never_cache
+@csrf_exempt
 def admin_login(request):
     if 'admin' in request.session:
         return redirect('admin_home')
