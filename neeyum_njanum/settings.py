@@ -86,10 +86,10 @@ ASGI_APPLICATION = 'neeyum_njanum.asgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'neeyum_njanum',
+        'NAME': 'qhlypjdyeeuomr',
         'USER': 'postgres',
-        'PASSWORD': 'sanusanu',
-        'HOST': 'localhost',
+        'PASSWORD': 'ec2-52-72-56-59.compute-1.amazonaws.com',
+        'HOST': 'ec2-52-72-56-59.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
