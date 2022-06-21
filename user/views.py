@@ -1,4 +1,3 @@
-from turtle import home
 from friends.models import *
 from payment.models import Subscription
 from .models import *
