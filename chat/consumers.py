@@ -1,7 +1,6 @@
 import json
 from channels.consumer import AsyncConsumer
 from channels.db import database_sync_to_async
-from requests import request
 from user.models import User
 
 from chat.models import Thread , ChatMessage

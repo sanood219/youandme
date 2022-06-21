@@ -1,5 +1,3 @@
-# from concurrent.futures import thread
-from multiprocessing import context
 from django.shortcuts import redirect, render
 from user.models import User
 from user.views import *

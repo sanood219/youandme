@@ -1,4 +1,3 @@
-import profile
 from django.shortcuts import redirect, render
 from friends.models import Friend_list, Friend_request
 from user.views import *

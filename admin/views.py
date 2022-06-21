@@ -1,10 +1,8 @@
-from multiprocessing import context
 from django.shortcuts import redirect, render
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate
 from django.contrib import messages
 from friends.models import Friend_list
-from friends.views import friend_remove
-from user.models import User, User_info
+from user.models import User
 from django.views.decorators.cache import never_cache
 from payment.models import *
 # Create your views here.

@@ -1,15 +1,6 @@
-import email
-from email.policy import default
-from operator import mod
-from os import remove
-from pickle import TRUE
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
 from django.utils import timezone
-from psycopg2 import Timestamp
-
-import user
-
 class UserManager(BaseUserManager):
 
     def _create_user(self, email, password, is_staff, is_superuser, is_verified, **extra_fields):

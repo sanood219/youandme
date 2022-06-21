@@ -1,10 +1,9 @@
-from multiprocessing import context
 from turtle import home
 from friends.models import *
 from payment.models import Subscription
 from .models import *
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.views.decorators.cache import never_cache
 from django.contrib.sites.shortcuts import get_current_site

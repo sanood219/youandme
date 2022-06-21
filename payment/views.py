@@ -1,5 +1,3 @@
-import email
-from multiprocessing import context
 from django.shortcuts import redirect, render
 from django.views.decorators.csrf import csrf_exempt
 import razorpay
