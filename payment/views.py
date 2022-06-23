@@ -4,10 +4,11 @@ import razorpay
 from payment.models import *
 from user.models import User
 from user.views import *
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
 
-
+@csrf_exempt
 def payment(request):
     user_id = request.session['username']
     user = User.objects.get(email=user_id)
