@@ -182,7 +182,7 @@ def view(request, id):
             if Profile_views.objects.filter(user=user1.id,visited_user=id).first():
                 return render(request, 'views.html', context)
             else:
-                views = Profile_views.objects.create(user=user, visited_user=id)
+                views = Profile_views.objects.create(user=user1, visited_user=id)
                 return render(request, 'view.html', context)
         elif Friend_request.objects.filter(sent_by=user1, send_to=id).first():
             friend_request = Friend_request.objects.get(send_to=id, sent_by=user1)
