@@ -42,3 +42,5 @@ PostgreSQL
 Bootstrap
 
 Javascript
+
+Web socket
